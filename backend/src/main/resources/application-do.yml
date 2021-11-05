@@ -29,15 +29,12 @@ spring:
 #  freemarker:
 #      cache: false
 
-
-
-
   queries:
     users-query: select email, password, active from users where email=?
     roles-query: select email, role from users where email=?
-#server:
-#  servlet:
-#    contextPath: /api
+server:
+  servlet:
+    contextPath: /
 
 jwtSecret: me.zhulin
 jwtExpiration: 86400

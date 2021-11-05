@@ -1,4 +1,4 @@
-name: springboot-angular7-online-shopping-store
+name: springboot-angular7-store
 static_sites:
 - name: frontend
   github:
