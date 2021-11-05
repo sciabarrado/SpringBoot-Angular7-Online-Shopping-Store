@@ -6,7 +6,7 @@ static_sites:
     branch: main
     deploy_on_push: true
   source_dir: frontend
-  build_command: npm run build --prod
+  build_command: ./node_modules/.bin/ng build --prod
   output_dir: dist/shop
   routes:
   - path: /
