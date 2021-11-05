@@ -1,0 +1,37 @@
+name: springboot-angular7-online-shopping-store
+static_sites:
+- name: frontend
+  github:
+    repo: sciabarrado/SpringBoot-Angular7-Online-Shopping-Store
+    branch: main
+    deploy_on_push: true
+  source_dir: frontend
+  build_command: npm run build
+  output_dir: dist/shop
+  routes:
+  - path: /
+services:
+- name: backend
+  source_dir: backend
+  dockerfile_path: backend/Dockerfile
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: sciabarrado/SpringBoot-Angular7-Online-Shopping-Store
+  envs:
+    - key: JDBC_DATABASE_URL
+      scope: RUN_TIME
+      value: ${db.JDBC_DATABASE_URL}
+    - key: USERNAME
+      scope: RUN_TIME
+      value: ${db.USERNAME}
+    - key: PASSWORD
+      scope: RUN_TIME
+      value: ${db.PASSWORD}
+  http_port: 8080
+  routes:
+    - path: /api
+databases:
+- name: db
+  engine: PG
+  version: "12"
